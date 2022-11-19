@@ -1,10 +1,6 @@
 public class Rabbit extends Animal implements CanReWrite, CanAppreciate{
 
-    private Book lysolution;
-
-    public void setLysolutionName(Book lysolution) {
-        this.lysolution = lysolution;
-    }
+    private final Book lysolution;
 
     public Book getLysolution(){
         return lysolution;
