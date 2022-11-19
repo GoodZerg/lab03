@@ -17,7 +17,9 @@ public class Rabbit extends Animal implements CanReWrite, CanAppreciate{
 
     @Override
     public void saySomething(){
-        System.out.println("Я прочитаю тебе свою новую книгу:\n " + lysolution.getText());
+        System.out.println("Кролик сказал:");
+        System.out.println("    Я прочитаю тебе свою новую книгу ");
+        System.out.println("Кролик читал книгу на протяжении 2 часов ");
     }
 
     public void reWrite(){

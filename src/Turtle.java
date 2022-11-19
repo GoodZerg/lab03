@@ -4,7 +4,8 @@ public class Turtle extends Animal{
     }
     @Override
     public void saySomething(){
-        System.out.println("Мне понравилосб, я приду");
+        System.out.println("ЧЕРЕПАХА сказала:");
+        System.out.println("    Мне понравилосб, я приду");
     }
 
 }
