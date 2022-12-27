@@ -10,18 +10,26 @@ public class Rabbit extends Animal {
     Rabbit(){
         setName("Кролик");
         class BookActionComponent implements CanReWrite, CanAppreciate{
+            private static Random rand = new Random();
             public void reWrite(){
-                lysolution.setPagesNumber(lysolution.getPagesNumber() + 1);
-                lysolution.setText(lysolution.getText() + "\nadfsg");
+                lysolution.setText("");
+                lysolution.setPagesNumber(rand.nextInt(10));
+                for (int i = 0;i < lysolution.getPagesNumber(); ++i){
+                    lysolution.setText(lysolution.getText() + "\nadfsg");
+                }
             }
 
-            public BookCharacteristics appreciate() {
-                if (lysolution.getPagesNumber() == 1)      return BookCharacteristics.VeryBad;
-                else if (lysolution.getPagesNumber() == 2) return BookCharacteristics.Bad;
-                else if (lysolution.getPagesNumber() == 3) return BookCharacteristics.Common;
-                else if (lysolution.getPagesNumber() == 4) return BookCharacteristics.Good;
-                else                                       return BookCharacteristics.VeryGood;
-
+            public BookCharacteristics appreciate(){
+                try {
+                    if (lysolution.getPagesNumber() == 1)      return BookCharacteristics.VeryBad;
+                    else if (lysolution.getPagesNumber() == 2) return BookCharacteristics.Bad;
+                    else if (lysolution.getPagesNumber() == 3) return BookCharacteristics.Common;
+                    else if (lysolution.getPagesNumber() == 4) return BookCharacteristics.Good;
+                    else throw new BookException("Книга слишком хороша, нужно переписать");
+                }catch (BookException e){
+                    System.out.println(e.getMessage());
+                    return BookCharacteristics.VeryGood;
+                }
             }
         }
 
@@ -29,8 +37,7 @@ public class Rabbit extends Animal {
 
         lysolution = new Book("Лизорюция", "afd",1);
 
-        while (bac.appreciate() != BookCharacteristics.Good &&
-                bac.appreciate() != BookCharacteristics.VeryGood){
+        while (bac.appreciate() != BookCharacteristics.Good){
             bac.reWrite();
         }
     }
@@ -45,7 +52,9 @@ public class Rabbit extends Animal {
             System.out.println("    - " + getRandomAnswer());
         }
         private static String getRandomAnswer(){
-            return answers[rand.nextInt(answers.length)];
+            int i = rand.nextInt(answers.length);
+            if (i == 2) throw new ThinkException("Кролик хочет дать непозволительный ответ");
+            return answers[i];
         }
     }
 
