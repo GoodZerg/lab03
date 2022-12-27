@@ -3,20 +3,30 @@ public class Main {
         //Rabbit rabbit = new Rabbit();
         Rabbit rabbit = new Rabbit();
 
-        while (rabbit.appreciate() != BookCharacteristics.Good &&
-                rabbit.appreciate() != BookCharacteristics.VeryGood){
-            rabbit.reWrite();
-        }
+        Animal[] animals = new Animal[3];
+        animals[0] = rabbit;
+        animals[1] = new Turtle();
+        animals[2] = new Bear();
 
-        Animal[] animals = new Animal[2];
-        animals[0] = new Turtle();
-        animals[1] = new Bear();
-
-        for (int i = 0; i < animals.length; ++i){
-            rabbit.moveTo(animals[i]);
+        for (int i = 1; i < animals.length; ++i){
+            rabbit.amc.moveTo(animals[i]);
             rabbit.saySomething();
             animals[i].saySomething();
             System.out.println("");
         }
+
+        for (int i = 1; i < animals.length; ++i){
+            animals[i].asking();
+            Rabbit.ThinkingComponent.answer();
+        }
+
+        for (Animal animal : animals) {
+            animal.amc.chairAction();
+        }
+
+        System.out.println();
+        rabbit.specialChairAction();
+        rabbit.amc.chairAction();
+
     }
 }

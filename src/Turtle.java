@@ -4,8 +4,12 @@ public class Turtle extends Animal{
     }
     @Override
     public void saySomething(){
-        System.out.println("ЧЕРЕПАХА сказала:");
-        System.out.println("    Мне понравилосб, я приду");
+        System.out.println(getName() + " сказала:");
+        System.out.println("    - Мне понравилосб, я приду");
     }
-
+    @Override
+    public void asking(){
+        System.out.println(getName() + " сказала:");
+        System.out.println("    - Как поживаешь?");
+    }
 }

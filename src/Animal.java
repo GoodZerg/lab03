@@ -2,6 +2,7 @@ import java.lang.String;
 public abstract class Animal {
     private String name;
 
+    public AnimalMovementComponent amc = new AnimalMovementComponent();
     public void setName(String name) {
         this.name = name;
     }
@@ -10,9 +11,18 @@ public abstract class Animal {
         return name;
     }
 
-    public void moveTo(Animal animal){
-        System.out.println(name + " подбежал к " + animal.name);
+    public class AnimalMovementComponent implements CanChairAction{
+        public void moveTo(Animal animal){
+            System.out.println(name + " подбежал к " + animal.name);
+        }
+
+        @Override
+        public void chairAction(){
+            System.out.println(name + " сел на стул");
+        }
     }
+
+
 
     @Override
     public boolean equals(Object o) {
@@ -31,4 +41,6 @@ public abstract class Animal {
     }
 
     public abstract void saySomething();
+    public abstract void asking();
+
 }

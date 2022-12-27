@@ -4,7 +4,12 @@ public class Bear extends Animal{
     }
     @Override
     public void saySomething(){
-        System.out.println("МЕДВЕД сказал:");
-        System.out.println("    придется придти");
+        System.out.println(getName() + " сказал:");
+        System.out.println("     - придется придти");
+    }
+    @Override
+    public void asking(){
+        System.out.println(getName() + " спросил:");
+        System.out.println("    - как дила?");
     }
 }
